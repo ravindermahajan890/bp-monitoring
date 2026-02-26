@@ -6,20 +6,21 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
-      <div className="app">
-        <header className="app-header">
-          <h1>🩺 Blood Pressure Monitor</h1>
-          <p>Track your systolic &amp; diastolic readings over time</p>
-          <nav className="app-nav">
-            <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              📋 Readings
-            </NavLink>
-            <NavLink to="/trends" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              📈 Trends &amp; Insights
-            </NavLink>
-          </nav>
-        </header>
+      <nav className="navbar">
+        <div className="navbar-brand">
+          🩺 <span>BP Monitor</span>
+        </div>
+        <div className="navbar-links">
+          <NavLink to="/" end className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`}>
+            📋 Readings
+          </NavLink>
+          <NavLink to="/trends" className={({ isActive }) => `navbar-link ${isActive ? 'active' : ''}`}>
+            📈 Trends &amp; Insights
+          </NavLink>
+        </div>
+      </nav>
 
+      <div className="app">
         <main>
           <Routes>
             <Route path="/" element={<ReadingsPage />} />

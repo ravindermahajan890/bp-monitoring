@@ -13,9 +13,13 @@ import {
 
 function getTimeOfDay(date) {
   const hour = date.getHours();
-  if (hour >= 18 || hour < 2) return 'Night';    // 18:00 – 01:59
-  if (hour < 12) return 'Morning';                // 02:00 – 11:59
-  return 'Evening';                               // 12:00 – 17:59
+  if (hour >= 18 || hour < 2) return 'Night';
+  if (hour < 12) return 'Morning';
+  return 'Evening';
+}
+
+function parseLocal(str) {
+  return new Date(String(str).replace('T', ' ').replace(/Z$/, '').replace(/[+-]\d{2}:\d{2}$/, ''));
 }
 
 const FILTERS = ['All', 'Morning', 'Evening', 'Night'];
@@ -43,13 +47,13 @@ export default function BPChart({ readings }) {
   // Filter readings by time of day
   const filtered = activeFilter === 'All'
     ? readings
-    : readings.filter((r) => getTimeOfDay(new Date(r.recorded_at)) === activeFilter);
+    : readings.filter((r) => getTimeOfDay(parseLocal(r.recorded_at)) === activeFilter);
 
   // Sort oldest → newest for the chart
   const sorted = [...filtered]
-    .sort((a, b) => new Date(a.recorded_at) - new Date(b.recorded_at))
+    .sort((a, b) => parseLocal(a.recorded_at) - parseLocal(b.recorded_at))
     .map((r) => {
-      const d = new Date(r.recorded_at);
+      const d = parseLocal(r.recorded_at);
       return {
         label: d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
         time: d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }),

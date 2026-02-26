@@ -1,7 +1,7 @@
 import { deleteReading } from '../api';
 
 function formatDate(val) {
-  const d = new Date(val);
+  const d = new Date(String(val).replace('T', ' ').replace(/Z$/, '').replace(/[+-]\d{2}:\d{2}$/, ''));
   if (isNaN(d.getTime())) return '—';
   const date = d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
   const time = d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });

@@ -14,6 +14,59 @@ body {
   line-height: 1.6;
 }
 
+/* ── Navbar ────────────────────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.navbar-brand span {
+  color: #3b82f6;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.navbar-link {
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.navbar-link:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.navbar-link.active {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
 /* ── App Shell ─────────────────────────────────── */
 .app {
   max-width: 1400px;
@@ -21,50 +74,6 @@ body {
   padding: 2rem 1.25rem 4rem;
 }
 
-.app-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.app-header h1 {
-  font-size: 2rem;
-  color: #0f172a;
-}
-
-.app-header p {
-  color: #64748b;
-  font-size: 1rem;
-}
-
-/* ── Navigation ────────────────────────────────── */
-.app-nav {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-}
-
-.nav-link {
-  padding: 0.5rem 1.25rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 999px;
-  background: #f8fafc;
-  color: #475569;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.nav-link:hover {
-  background: #e2e8f0;
-}
-
-.nav-link.active {
-  background: #3b82f6;
-  color: #fff;
-  border-color: #3b82f6;
-}
 
 /* ── Form ──────────────────────────────────────── */
 .reading-form {
@@ -316,22 +325,25 @@ body {
 .filter-pills {
   display: flex;
   gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .filter-pill {
   padding: 0.35rem 0.85rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #e2e8f0;
   border-radius: 999px;
   background: #f8fafc;
-  color: #475569;
+  color: #64748b;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s;
 }
 
 .filter-pill:hover {
-  background: #e2e8f0;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
 }
 
 .filter-pill.active {
@@ -377,169 +389,56 @@ body {
   color: #334155;
 }
 
-/* ── Metric Filter Bar ─────────────────────────── */
-.metric-filter-bar {
+/* ── Unified Filter Toolbar ────────────────────── */
+.filter-toolbar {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.metric-filter-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #64748b;
-}
-
-.metric-pills {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.metric-pill {
-  padding: 0.4rem 0.9rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 999px;
-  background: #f8fafc;
-  color: #475569;
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.metric-pill:hover {
-  background: #e2e8f0;
-}
-
-.metric-pill.active {
-  background: #1e293b;
-  color: #fff;
-  border-color: #1e293b;
-}
-
-/* ── Explainer Cards ───────────────────────────── */
-.explainer-card {
+  align-items: flex-start;
+  gap: 0;
   background: #fff;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.explainer-what {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 0.35rem;
-}
-
-.explainer-body {
-  font-size: 0.88rem;
-  color: #475569;
-  line-height: 1.55;
-  margin-bottom: 0.75rem;
-}
-
-.explainer-ranges {
+.filter-group {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-.explainer-range {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  line-height: 1.45;
+.filter-group-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
 }
 
-.explainer-range.ok {
-  background: #f0fdf4;
-  color: #166534;
-  border: 1px solid #bbf7d0;
+
+.filter-divider {
+  width: 1px;
+  background: #e2e8f0;
+  align-self: stretch;
+  margin: 0 0.25rem;
 }
 
-.explainer-range.warn {
-  background: #fffbeb;
-  color: #92400e;
-  border: 1px solid #fde68a;
-}
-
-.explainer-range-icon {
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-/* Explainer mini (All view) */
-.explainer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-}
-
-.explainer-mini {
+/* ── Date Range Filter ─────────────────────────── */
+.insights-header {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 0.85rem 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.explainer-mini:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.explainer-mini-emoji {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.explainer-mini strong {
-  display: block;
-  font-size: 0.85rem;
-  color: #1e293b;
-  margin-bottom: 0.1rem;
-}
-
-.explainer-mini p {
-  font-size: 0.78rem;
-  color: #94a3b8;
-  margin: 0;
-  line-height: 1.35;
-}
-
-.explainer-mini-arrow {
-  margin-left: auto;
-  color: #cbd5e1;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-/* ── Trend Stats Row (avg/min/max) ─────────────── */
-.trend-stats-row {
-  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
 }
 
-.trend-stat-mini {
-  font-size: 0.78rem;
-  color: #64748b;
+.insights-header h2 {
+  margin: 0;
 }
 
-.trend-stat-mini strong {
-  color: #1e293b;
-  font-weight: 700;
-}
 
 /* ── Insights Grid ─────────────────────────────── */
 .insights-grid {
@@ -573,290 +472,66 @@ body {
   line-height: 1.45;
 }
 
-.sub-heading {
-  font-size: 0.85rem;
+
+/* ── Reading Log by Time of Day ────────────────── */
+.period-log {
+  margin-bottom: 1.5rem;
+}
+
+.period-log:last-child {
+  margin-bottom: 0;
+}
+
+.period-log-heading {
+  font-size: 0.88rem;
+  font-weight: 700;
   color: #475569;
-  margin: 1rem 0 0.5rem;
-  font-weight: 600;
-}
-
-/* ── Trend Badges ──────────────────────────────── */
-.trend-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.trend-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.trend-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-.trend-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  flex-wrap: wrap;
-}
-
-.trend-arrow {
-  font-size: 1rem;
-  font-weight: 800;
-}
-
-.trend-detail {
-  font-weight: 400;
-  color: #64748b;
-  font-size: 0.78rem;
-}
-
-.trend-up {
-  background: #fef2f2;
-  color: #dc2626;
-  border: 1px solid #fecaca;
-}
-
-.trend-down {
-  background: #f0fdf4;
-  color: #16a34a;
-  border: 1px solid #bbf7d0;
-}
-
-.trend-stable {
-  background: #f0f9ff;
-  color: #0284c7;
-  border: 1px solid #bae6fd;
-}
-
-.trend-na {
-  background: #f8fafc;
-  color: #94a3b8;
-  border: 1px solid #e2e8f0;
-}
-
-/* ── Days Summary ──────────────────────────────── */
-.days-summary {
   margin-bottom: 0.5rem;
-}
-
-.days-bar {
-  display: flex;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 36px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-}
-
-.days-bar-segment {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  padding: 0 0.75rem;
-  white-space: nowrap;
-}
-
-.days-bar-segment.normal {
-  background: #22c55e;
-}
-
-.days-bar-segment.above {
-  background: #f97316;
-}
-
-.days-legend {
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.days-legend-item {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.82rem;
-  color: #475569;
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot-normal {
-  background: #22c55e;
-}
-
-.dot-above {
-  background: #f97316;
-}
-
-/* ── Category Breakdown ────────────────────────── */
-.category-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.category-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  background: #fff;
-  border: 1px solid #f1f5f9;
-}
-
-.cat-icon {
-  font-size: 1rem;
-  width: 1.5rem;
-  text-align: center;
-}
-
-.cat-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.cat-name {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #334155;
-  display: block;
-}
-
-.cat-range {
-  font-size: 0.75rem;
-  color: #94a3b8;
-  display: block;
-}
-
-.cat-count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  height: 24px;
-  border-radius: 999px;
-  color: #fff;
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-/* ── Period Cards (Morning / Evening / Night) ──── */
-.period-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.period-card {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-}
-
-.period-card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.75rem;
-}
-
-.period-emoji {
-  font-size: 1.5rem;
-}
-
-.period-card-header strong {
-  display: block;
-  font-size: 0.95rem;
-  color: #1e293b;
-}
-
-.period-hours {
-  display: block;
-  font-size: 0.75rem;
-  color: #94a3b8;
-}
-
-.period-count {
-  font-size: 0.8rem;
-  color: #64748b;
-  margin-bottom: 0.75rem;
-}
-
-.period-empty {
-  font-size: 0.85rem;
-  color: #cbd5e1;
-  font-style: italic;
-}
-
-/* Per-metric rows inside period cards */
-.period-metric-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.period-metric-row {
-  border-top: 1px solid #f1f5f9;
-  padding-top: 0.6rem;
-}
-
-.period-metric-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.2rem;
-}
-
-.period-metric-header > span:first-child {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #475569;
-}
-
-.period-metric-avg {
-  font-size: 1.15rem;
-  font-weight: 800;
-}
-
-.period-metric-avg.ok {
-  color: #22c55e;
-}
-
-.period-metric-avg.warn {
-  color: #ef4444;
-}
-
-.period-metric-avg small {
-  font-size: 0.7rem;
+.period-log-heading span {
   font-weight: 400;
   color: #94a3b8;
+  font-size: 0.78rem;
 }
 
-.period-metric-range {
+.reading-log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.reading-log-table th {
+  text-align: left;
+  padding: 0.4rem 0.75rem;
   font-size: 0.75rem;
+  font-weight: 600;
   color: #94a3b8;
-  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.reading-log-table td {
+  padding: 0.5rem 0.75rem;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.reading-log-table tr:last-child td {
+  border-bottom: none;
+}
+
+.reading-log-table tr.row-high {
+  background: #fff7f7;
+}
+
+.reading-log-table td.val-high {
+  color: #dc2626;
+  font-weight: 700;
 }
 
 /* ── Utilities ─────────────────────────────────── */
@@ -868,30 +543,25 @@ body {
 }
 
 /* ── Responsive ────────────────────────────────── */
-@media (max-width: 768px) {
-  .period-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .explainer-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 600px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-brand span {
+    display: none;
+  }
+
+  .navbar-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.82rem;
+  }
+
   .form-grid {
     grid-template-columns: 1fr;
   }
 
   .insights-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .period-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .explainer-grid {
     grid-template-columns: 1fr;
   }
 
