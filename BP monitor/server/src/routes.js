@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
       `INSERT INTO bp_readings (recorded_at, systolic, diastolic, pulse, notes)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
-      [recorded_at, systolic, diastolic, pulse || null, notes || null]
+      [recorded_at, parseInt(systolic), parseInt(diastolic), pulse ? parseInt(pulse) : null, notes || null]
     );
 
     res.status(201).json(result.rows[0]);

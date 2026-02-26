@@ -1,5 +1,13 @@
 import { deleteReading } from '../api';
 
+function formatDate(val) {
+  const d = new Date(val);
+  if (isNaN(d.getTime())) return '—';
+  const date = d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+  const time = d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+  return `${date} ${time}`;
+}
+
 function classifyBP(systolic, diastolic) {
   if (systolic < 120 && diastolic < 80) return { label: 'Normal', color: '#22c55e' };
   if (systolic < 130 && diastolic < 80) return { label: 'Elevated', color: '#eab308' };
@@ -61,8 +69,7 @@ export default function ReadingsTable({ readings, onDeleted }) {
             return (
               <tr key={r.id}>
                 <td>
-                  {new Date(r.recorded_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}{' '}
-                  {new Date(r.recorded_at).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}
+                  {formatDate(r.recorded_at)}
                 </td>
                 <td>
                   <span className="val-cell" style={{ background: sysColor(r.systolic) }}>
@@ -104,8 +111,7 @@ export default function ReadingsTable({ readings, onDeleted }) {
             <div key={r.id} className="reading-card">
               <div className="reading-card-top">
                 <span className="reading-card-date">
-                  {new Date(r.recorded_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}{' '}
-                  {new Date(r.recorded_at).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}
+                  {formatDate(r.recorded_at)}
                 </span>
                 <span className="bp-badge" style={{ background: bp.color }}>
                   {bp.label}

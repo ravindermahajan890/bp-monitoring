@@ -16,7 +16,7 @@ function classifyBP(systolic, diastolic) {
 
 function avg(arr) {
   if (!arr.length) return 0;
-  return Math.round(arr.reduce((s, v) => s + v, 0) / arr.length);
+  return Math.round(arr.reduce((s, v) => s + Number(v), 0) / arr.length);
 }
 
 function minMax(arr) {

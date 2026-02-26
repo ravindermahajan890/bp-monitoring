@@ -5,6 +5,7 @@ async function migrate() {
   try {
     await client.query(`
       CREATE TABLE IF NOT EXISTS bp_readings (
+        id SERIAL PRIMARY KEY,
         recorded_at TIMESTAMP NOT NULL,
         systolic INTEGER NOT NULL CHECK (systolic > 0 AND systolic < 300),
         diastolic INTEGER NOT NULL CHECK (diastolic > 0 AND diastolic < 300),

@@ -7,7 +7,12 @@ const routes = require('./routes');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || '*',
+  methods: ['GET', 'POST', 'DELETE'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/readings', routes);

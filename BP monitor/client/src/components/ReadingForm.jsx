@@ -100,8 +100,10 @@ export default function ReadingForm({ onSaved }) {
             placeholder="e.g. 120"
             value={form.systolic}
             onChange={handleChange}
+            inputMode="numeric"
             min="50"
             max="250"
+            maxLength="3"
             required
           />
         </label>
@@ -114,8 +116,10 @@ export default function ReadingForm({ onSaved }) {
             placeholder="e.g. 80"
             value={form.diastolic}
             onChange={handleChange}
+            inputMode="numeric"
             min="30"
             max="200"
+            maxLength="3"
             required
           />
         </label>
@@ -128,8 +132,10 @@ export default function ReadingForm({ onSaved }) {
             placeholder="e.g. 72"
             value={form.pulse}
             onChange={handleChange}
+            inputMode="numeric"
             min="30"
             max="220"
+            maxLength="3"
           />
         </label>
 
