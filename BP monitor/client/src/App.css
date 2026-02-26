@@ -1,0 +1,910 @@
+/* ── Reset & Base ───────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* ── App Shell ─────────────────────────────────── */
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+.app-header p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* ── Navigation ────────────────────────────────── */
+.app-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.nav-link {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background: #e2e8f0;
+}
+
+.nav-link.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+/* ── Form ──────────────────────────────────────── */
+.reading-form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.reading-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.form-grid input {
+  margin-top: 0.3rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border 0.2s;
+}
+
+.form-grid input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.reading-form button[type='submit'] {
+  margin-top: 1.25rem;
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reading-form button[type='submit']:hover {
+  background: #2563eb;
+}
+
+.reading-form button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-error {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Table ─────────────────────────────────────── */
+.table-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.table-wrapper h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* Desktop table — hidden on mobile */
+.readings-table-desktop {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Mobile cards — hidden on desktop */
+.readings-cards-mobile {
+  display: none;
+}
+
+.readings-table-desktop thead th {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.readings-table-desktop tbody td {
+  padding: 0.65rem 0.75rem;
+  font-size: 0.93rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.readings-table-desktop tbody tr:hover {
+  background: #f8fafc;
+}
+
+.bp-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+/* ── Mobile Reading Cards ──────────────────────── */
+.reading-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.reading-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.reading-card-date {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.reading-card-values {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.reading-card-val {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.reading-card-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+}
+
+.reading-card-na {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+
+.reading-card-notes {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.reading-card-delete {
+  width: 100%;
+  text-align: center;
+  padding: 0.4rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  opacity: 0.6;
+  transition: all 0.2s;
+}
+
+.reading-card-delete:hover {
+  opacity: 1;
+  background: #fef2f2;
+}
+
+.btn-delete:hover {
+  opacity: 1;
+}
+
+.val-cell {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ── Chart ─────────────────────────────────────── */
+.chart-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.chart-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.filter-pill {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-pill:hover {
+  background: #e2e8f0;
+}
+
+.filter-pill.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+.chart-wrapper h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.chart-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 0.5rem;
+}
+
+/* ── Insights ──────────────────────────────────── */
+.insights-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.insights-wrapper h2 {
+  margin-bottom: 0.35rem;
+  font-size: 1.3rem;
+}
+
+.insights-subtitle {
+  color: #64748b;
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.insights-subtitle strong {
+  color: #334155;
+}
+
+/* ── Metric Filter Bar ─────────────────────────── */
+.metric-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.metric-filter-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.metric-pills {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.metric-pill {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.metric-pill:hover {
+  background: #e2e8f0;
+}
+
+.metric-pill.active {
+  background: #1e293b;
+  color: #fff;
+  border-color: #1e293b;
+}
+
+/* ── Explainer Cards ───────────────────────────── */
+.explainer-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.explainer-what {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.35rem;
+}
+
+.explainer-body {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+}
+
+.explainer-ranges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.explainer-range {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.explainer-range.ok {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.explainer-range.warn {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.explainer-range-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Explainer mini (All view) */
+.explainer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.explainer-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.explainer-mini:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.explainer-mini-emoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.explainer-mini strong {
+  display: block;
+  font-size: 0.85rem;
+  color: #1e293b;
+  margin-bottom: 0.1rem;
+}
+
+.explainer-mini p {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.explainer-mini-arrow {
+  margin-left: auto;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ── Trend Stats Row (avg/min/max) ─────────────── */
+.trend-stats-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.trend-stat-mini {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.trend-stat-mini strong {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* ── Insights Grid ─────────────────────────────── */
+.insights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.insights-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.insights-section-full {
+  grid-column: 1 / -1;
+}
+
+.insights-section h3 {
+  font-size: 1rem;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.section-desc {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+  line-height: 1.45;
+}
+
+.sub-heading {
+  font-size: 0.85rem;
+  color: #475569;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+/* ── Trend Badges ──────────────────────────────── */
+.trend-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.trend-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.trend-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.trend-arrow {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.trend-detail {
+  font-weight: 400;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.trend-up {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.trend-down {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.trend-stable {
+  background: #f0f9ff;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+
+.trend-na {
+  background: #f8fafc;
+  color: #94a3b8;
+  border: 1px solid #e2e8f0;
+}
+
+/* ── Days Summary ──────────────────────────────── */
+.days-summary {
+  margin-bottom: 0.5rem;
+}
+
+.days-bar {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 36px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.days-bar-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0 0.75rem;
+  white-space: nowrap;
+}
+
+.days-bar-segment.normal {
+  background: #22c55e;
+}
+
+.days-bar-segment.above {
+  background: #f97316;
+}
+
+.days-legend {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.days-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-normal {
+  background: #22c55e;
+}
+
+.dot-above {
+  background: #f97316;
+}
+
+/* ── Category Breakdown ────────────────────────── */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #f1f5f9;
+}
+
+.cat-icon {
+  font-size: 1rem;
+  width: 1.5rem;
+  text-align: center;
+}
+
+.cat-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cat-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  display: block;
+}
+
+.cat-range {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  display: block;
+}
+
+.cat-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 24px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* ── Period Cards (Morning / Evening / Night) ──── */
+.period-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.period-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.period-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.period-emoji {
+  font-size: 1.5rem;
+}
+
+.period-card-header strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.period-hours {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.period-count {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+}
+
+.period-empty {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+/* Per-metric rows inside period cards */
+.period-metric-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.period-metric-row {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 0.6rem;
+}
+
+.period-metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.period-metric-header > span:first-child {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.period-metric-avg {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.period-metric-avg.ok {
+  color: #22c55e;
+}
+
+.period-metric-avg.warn {
+  color: #ef4444;
+}
+
+.period-metric-avg small {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.period-metric-range {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 0.35rem;
+}
+
+/* ── Utilities ─────────────────────────────────── */
+.empty-msg {
+  text-align: center;
+  color: #94a3b8;
+  padding: 2rem 0;
+  font-size: 0.95rem;
+}
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 768px) {
+  .period-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .explainer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .period-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .explainer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .readings-table-desktop {
+    display: none;
+  }
+
+  .readings-cards-mobile {
+    display: block;
+  }
+
+  .app {
+    padding: 1rem 0.75rem 3rem;
+  }
+}
+
